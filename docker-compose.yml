@@ -1,0 +1,26 @@
+version: '2'
+services:
+  php-apache-dev:
+    image: 'webdevops/php-apache-dev:8.1-alpine'
+    ports:
+      - '82:80'
+      - '446:443'
+    links:
+      - 'mariadb:db'
+    depends_on: []
+    environment:
+      - PHP_DISPLAY_ERRORS=1
+      - WEB_DOCUMENT_ROOT=/app/public
+      - APPLICATION_PATH=/app
+      - php.post_max_size=500M
+      - php.upload_max_filesize=500M
+    volumes:
+      - './:/app'
+  mariadb:
+    environment:
+      - MYSQL_ROOT_PASSWORD=demo1234
+    ports:
+      - '3309:3306'
+    volumes:
+      - './mysql:/var/lib/mysql'
+    image: 'mariadb:latest'
