@@ -27,10 +27,11 @@ Route::middleware('auth')->group(function (){
 });
 
 Route::get('/calendar',[CalendarController::class,'index'])->name('calendar.index');
-Route::get('/blog',[BlogController::class,'index'])->name('blog.index');
+Route::get('/blog/',[BlogController::class,'create'])->name('blog.create');
 Route::get('/blog/all/{user}',[BlogController::class,'view_all'])->name('blog.view_all');
 Route::get('/blog/{user}/{blog}',[BlogController::class,'view_one'])->name('blog.view_one');
 Route::post('/blog',[BlogController::class,'store'])->name('blog.store');
+Route::delete('/blog/{blog}/delete',[BlogController::class,'delete'])->name('blog.delete');
 
 Auth::routes();
 

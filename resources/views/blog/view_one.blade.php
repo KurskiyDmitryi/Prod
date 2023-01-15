@@ -23,5 +23,15 @@
         document.querySelector('#back').addEventListener('click', function () {
             location.href = '{{route('blog.view_all',\Illuminate\Support\Facades\Auth::id())}}';
         })
+        document.querySelector('#delete').addEventListener('click', async function () {
+                try {
+                    const {data: {route}} = await axios.delete('{{route('blog.delete',$blog->id)}}')
+                    location.href = route;
+                } catch
+                    (e) {
+                    console.log(e)
+                }
+            }
+        )
     </script>
 @endpush

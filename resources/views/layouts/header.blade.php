@@ -14,7 +14,7 @@
                 <div class="dropdown">
                     <button class="dropbtn">Blog</button>
                     <div class="dropdown-content">
-                        <a href="{{route('blog.index')}}">Write blog</a>
+                        <a href="{{route('blog.create')}}">Write blog</a>
                         <a href="{{route('blog.view_all',Auth::id())}}">Look all</a>
                     </div>
                 </div>

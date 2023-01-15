@@ -138,7 +138,6 @@
             // Привязываем кнопки «Следующий» и «Предыдущий»
             getId('btnNext').onclick = function () {
                 c.nextMonth();
-                location.reload()
             };
             getId('btnPrev').onclick = function () {
                 c.previousMonth();
