@@ -34,13 +34,12 @@ class BlogController extends Controller
 
     public function view_one(User $user, Blog $blog)
     {
-
         return view('blog.view_one', compact(['user', 'blog']));
     }
 
     public function delete(Blog $blog)
     {
         $blog->delete();
-        return response()->json(['route' => url(route('blog.view_all',Auth::user()))]);
+        return response()->json(['route' => url(route('blog.view_all', Auth::user()))]);
     }
 }

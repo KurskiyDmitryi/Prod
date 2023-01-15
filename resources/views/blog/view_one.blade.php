@@ -21,7 +21,7 @@
 @push('js')
     <script type="text/javascript">
         document.querySelector('#back').addEventListener('click', function () {
-            location.href = '{{route('blog.view_all',\Illuminate\Support\Facades\Auth::id())}}';
+            location.href = '{{route('blog.view_all',Auth::user()->slug)}}';
         })
         document.querySelector('#delete').addEventListener('click', async function () {
                 try {
@@ -29,7 +29,6 @@
                     location.href = route;
                 } catch
                     (e) {
-                    console.log(e)
                 }
             }
         )

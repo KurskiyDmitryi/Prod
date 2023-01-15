@@ -15,7 +15,7 @@
                     <button class="dropbtn">Blog</button>
                     <div class="dropdown-content">
                         <a href="{{route('blog.create')}}">Write blog</a>
-                        <a href="{{route('blog.view_all',Auth::id())}}">Look all</a>
+                        <a href="{{route('blog.view_all',Auth::user()->slug)}}">Look all</a>
                     </div>
                 </div>
             <a class="nav-link" href="{{route('calendar.index',Auth::id())}}">Calendar</a>
