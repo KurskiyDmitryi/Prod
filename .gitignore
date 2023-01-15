@@ -19,4 +19,6 @@ yarn-error.log
 /mysql
 /public/.htaccess
 /public/index.php
+/public/build
+/build
 
