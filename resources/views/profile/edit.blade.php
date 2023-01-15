@@ -81,7 +81,7 @@
                 var sex = $('.option').val();
 
                 try {
-                    const {data : {route}} = await axios.post('{{route('profile.update',$user->id)}}', {
+                    const {data : {route}} = await axios.post('{{route('profile.update',$user->slug)}}', {
                         age,
                         from,
                         sex

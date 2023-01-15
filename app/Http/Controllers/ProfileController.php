@@ -95,7 +95,7 @@ class ProfileController extends Controller
                 'user_id' => Auth::id(),
             ]);
         }
-        return response()->json(['route'=>url(route('profile.index',Auth::id())),'sss'=>'lll']);
+        return response()->json(['route'=>url(route('profile.index',Auth::user()->slug))]);
     }
 
 
