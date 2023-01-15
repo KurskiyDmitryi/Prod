@@ -8,6 +8,7 @@
     <title>@yield('title')</title>
     <x-header-script/>
     @yield('scripts')
+    @vite('resources/js/app.js')
 </head>
 <body>
 @include('layouts.header')
