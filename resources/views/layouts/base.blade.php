@@ -12,6 +12,7 @@
 </head>
 <body>
 @include('layouts.header')
+@include('layouts.messages.success')
 @yield('content')
 @include('layouts.footer')
 @stack('js')
