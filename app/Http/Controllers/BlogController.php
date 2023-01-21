@@ -29,7 +29,8 @@ class BlogController extends Controller
 
     public function view_all(User $user)
     {
-        return view('blog.view_all', compact('user'));
+        $blogPaginated = $user->blogs()->latest()->paginate(6);
+        return view('blog.view_all', compact(['user','blogPaginated']));
     }
 
     public function view_one(User $user, Blog $blog)

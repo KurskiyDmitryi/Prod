@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Blog;
+use Database\Factories\BlogFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class BlogSeeder extends Seeder
 {
@@ -14,6 +17,6 @@ class BlogSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Blog::factory(50)->create();
     }
 }
