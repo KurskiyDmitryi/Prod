@@ -6,21 +6,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            @auth()
-                <a class="nav-link active" aria-current="page"
-                   href="{{route('profile.index',Auth::user())}}">Profile</a>
 
-{{--            <a class="nav-link" href="{{route('blog.index')}}">Blog</a>--}}
-                <div class="dropdown">
-                    <button class="dropbtn">Blog</button>
-                    <div class="dropdown-content">
-                        <a href="{{route('blog.create')}}">Write blog</a>
-                        <a href="{{route('blog.view_all',Auth::user()->slug)}}">Look all</a>
-                    </div>
-                </div>
-            <a class="nav-link" href="{{route('calendar.index',Auth::id())}}">Calendar</a>
+            {{--            <a class="nav-link" href="{{route('calendar.index',Auth::id())}}">Calendar</a>--}}
 
-            @endauth
             @guest()
                 <div class="col-md-9">
                     <a class="nav-link" href="{{route('login')}}"
@@ -29,12 +17,23 @@
                 </div>
             @endguest
             @auth()
-                <form action="{{ route('logout') }}" method="POST"
-                      class="form-inline" style="display: flex">
-                    @csrf
-                    <input type="submit" class="btn btn-danger"
-                           value="Выход" style="display: flex; justify-content: right">
-                </form>
+
+                                <form action="{{ route('logout') }}" method="POST"
+                                                          class="form-inline" style="position: absolute; bottom: 10px; right: 20px">
+                                    @csrf
+                                    <div class="col-md-9">
+                                        <input type="submit" class="btn btn-danger"
+                                               value="Log out" style="">
+                                    </div>
+
+                                </form>
+
+                <div>
+{{--                    <button class="nav-link btn btn-sm btn-danger" style="position: absolute; bottom: 10px; right: 20px">Log out--}}
+
+                    </button>
+
+                </div>
             @endauth
         </div>
     </div>
