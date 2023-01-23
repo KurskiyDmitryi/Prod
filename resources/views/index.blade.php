@@ -25,9 +25,9 @@
                     <div class="content content_blog"><span class="picto"></span>
                         <h1>Blog</h1>
                         <p>Blog</p>
-                        <a href="" class="btn-primary btn btn-small blog_buttons">Write blog</a>
-                        <a href="" class="btn-primary btn btn-small blog_buttons">Look my blog</a>
-                        <a href="" class="btn-primary btn btn-small blog_buttons">Other blogers</a>
+                        <a href="{{route('blog.create')}}" class="btn-primary btn btn-small blog_buttons">Write blog</a>
+                        <a href="{{route('blog.view_all',Auth::user())}}" class="btn-primary btn btn-small blog_buttons">Look my blog</a>
+                        <a href="{{route('blog.view_all_bloggers')}}" class="btn-primary btn btn-small blog_buttons">Other bloggers</a>
                     </div>
                 </li>
 {{--                <li class="item">--}}

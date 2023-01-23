@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -30,7 +31,7 @@ class BlogController extends Controller
     public function view_all(User $user)
     {
         $blogPaginated = $user->blogs()->latest()->paginate(6);
-        return view('blog.view_all', compact(['user','blogPaginated']));
+        return view('blog.view_all', compact(['user', 'blogPaginated']));
     }
 
     public function view_one(User $user, Blog $blog)
@@ -42,5 +43,19 @@ class BlogController extends Controller
     {
         $blog->delete();
         return response()->json(['route' => url(route('blog.view_all', Auth::user()))]);
+    }
+
+    public function view_all_bloggers()
+    {
+        $usersPaginated = DB::table('users')->paginate(6);
+        return view('blog.search_bloggers', ['usersPaginated' => $usersPaginated]);
+    }
+
+    public function search(Request $request)
+    {
+        dd($request->all());
+        $data = $request->all();
+        $result = User::class->where('name', 'LIKE', "%{$request->data}%")->get();
+        return view('posts.view_search', ['result' => $result]);
     }
 }

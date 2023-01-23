@@ -23,7 +23,7 @@
                         <div class="intro">{{$blog->content}}</div>
                     </div><!-- /.title-content -->
                     <div class="card-info">
-                        <a href="">Details</a>
+                        <a href="{{route('blog.view_one',[Auth::user(),$blog->slug])}}" style="color: greenyellow">Details</a>
                     </div><!-- /.card-info -->
                     <div class="utility-info">
                         <ul class="utility-list">
