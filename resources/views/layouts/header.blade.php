@@ -23,13 +23,11 @@
                                     @csrf
                                     <div class="col-md-9">
                                         <input type="submit" class="btn btn-danger"
-                                               value="Log out" style="">
+                                               value="Log out" style="width: 80px">
                                     </div>
-
                                 </form>
 
                 <div>
-{{--                    <button class="nav-link btn btn-sm btn-danger" style="position: absolute; bottom: 10px; right: 20px">Log out--}}
 
                     </button>
 

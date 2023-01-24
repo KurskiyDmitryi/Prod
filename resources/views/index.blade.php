@@ -12,7 +12,8 @@
                     <div class="content content_profile"><span class="picto"></span>
                         <h1>Profile</h1>
                         <p>Personal profile details</p>
-                        <a class="btn btn-primary" href="{{route('profile.index',Auth::user())}}">Go</a>
+                        <a class="btn btn-primary" href="{{route('profile.index',Auth::user())}}">My profile</a>
+                        <a class="btn btn-primary" href="{{route('profile.edit',Auth::user())}}">Edit profile</a>
                     </div>
                 </li>
                 <li class="item">
@@ -62,6 +63,11 @@
         <div id="middle-border"></div>
         <div id="right-zone"></div>
     </div>
+    <style>
+        .btn-primary{
+            margin: 5px;
+        }
+    </style>
 @endauth
     @guest()
         <img src="main_picture/main_picture.jpg" style="width: 100%; height: 100%">

@@ -34,7 +34,7 @@
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             transition: 0.3s;
-            width: 30%;
+            width: 40%;
         }
 
         .card:hover {
@@ -60,7 +60,7 @@
                 document.querySelector('.row').remove();
                 var htmlObject = document.createElement('div');
                 htmlObject.innerHTML = response.data;
-                document.querySelector('#search_result').append(htmlObject)
+                document.querySelector('#search_result').append(htm)
 
 
             } catch (e) {

@@ -79,19 +79,22 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request, User $user)
     {
-//        dd($request->input());
         if (!empty(User::find(Auth::id())->profile->user_id) && User::find(Auth::id())->profile->user_id == Auth::id()) {
             Profile::where('user_id', Auth::id())->update([
-                'age' => $request['age'],
-                'from' => $request['from'],
+                'country' => $request['country'],
+                'city' => $request['city'],
                 'sex' => $request['sex'],
+                'family_status' => $request['family_status'],
+                'date_of_birth' => $request['date_of_birth'],
                 'user_id' => Auth::id(),
             ]);
         } else {
             Profile::create([
-                'age' => $request['age'],
-                'from' => $request['from'],
+                'country' => $request['country'],
+                'city' => $request['city'],
                 'sex' => $request['sex'],
+                'family_status' => $request['family_status'],
+                'date_of_birth' => $request['date_of_birth'],
                 'user_id' => Auth::id(),
             ]);
         }
