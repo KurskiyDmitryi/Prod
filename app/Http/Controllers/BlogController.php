@@ -53,9 +53,8 @@ class BlogController extends Controller
 
     public function search(Request $request)
     {
-        dd($request->all());
-        $data = $request->all();
-        $result = User::class->where('name', 'LIKE', "%{$request->data}%")->get();
-        return view('posts.view_search', ['result' => $result]);
+
+        $usersFromSearch = DB::table('users')->where('name', 'LIKE', "%{$request->keyWord}%")->paginate();
+        return view('blog.search_result', compact('usersFromSearch'));
     }
 }
