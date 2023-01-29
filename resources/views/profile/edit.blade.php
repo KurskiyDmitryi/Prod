@@ -117,51 +117,6 @@
 
             </style>
 
-
-            {{--            <label for="exampleInputEmail1" class="form-label">From</label>--}}
-            {{--            <input type="text" class="form-control @error('from') is-invalid @enderror" id="from" name="from"--}}
-            {{--                   @if(!empty($user->profile->from))value="{{$user->profile->from}}" @endif--}}
-            {{--                   placeholder=@if(empty($user->profile->age))"empty"--}}
-            {{--                @endif>--}}
-
-            {{--            @error('from')--}}
-            {{--            <span class="invalid-feedback" role="alert">--}}
-            {{--                {{$message}}--}}
-            {{--            </span>--}}
-            {{--            @enderror--}}
-            {{--        </div>--}}
-            {{--        <div class="mb-3">--}}
-            {{--            <label for="sex" class="form-label">Age</label>--}}
-            {{--            <input type="number" class="form-control @error('age') is-invalid @enderror" id="age" name="age"--}}
-            {{--                   value="@if(!empty($user->profile->age)){{$user->profile->age}}@endif"--}}
-            {{--                   placeholder=@if(empty($user->profile->age))"empty"--}}
-            {{--                @endif >--}}
-            {{--            @error('age')--}}
-            {{--            <span class="invalid-feedback" role="alert">--}}
-            {{--                {{$message}}--}}
-            {{--            </span>--}}
-            {{--            @enderror--}}
-            {{--        </div>--}}
-            {{--        <div class="mb-3">--}}
-            {{--            <label for="sex" class="form-label">Sex</label>--}}
-            {{--            <select class="form-select" aria-label="Default select example" name="sex" id="sex">--}}
-            {{--                <option class="option" value="Male"--}}
-            {{--                        @if(!empty($user->profile->sex) && $user->profile->sex == 'Male') selected @endif>Male--}}
-            {{--                </option>--}}
-            {{--                <option class="option" value="Female"--}}
-            {{--                        @if(!empty($user->profile->sex) && $user->profile->sex == 'Female') selected @endif>Female--}}
-            {{--                </option>--}}
-            {{--                <option class="option" value="Did not decide"--}}
-            {{--                        @if(!empty($user->profile->sex) && $user->profile->sex == 'Did not decide') selected @endif>Did--}}
-            {{--                    not decide--}}
-            {{--                </option>--}}
-            {{--                <option class="option" value="null"--}}
-            {{--                        @if(!empty($user->profile->sex) && $user->profile->sex == 'null')selected @endif>Empty--}}
-            {{--                </option>--}}
-            {{--            </select>--}}
-            {{--            <button type="submit" id="submit" class="btn btn-primary" style="margin-top: 15px">Update</button>--}}
-            {{--        </div>--}}
-            {{--    </div>--}}
             @endsection
             @push('js')
                 <script type="text/javascript">

@@ -21,4 +21,5 @@ yarn-error.log
 /public/index.php
 /public/build
 /build
-
+/resources/views/blog/search_bloggers.blade.php
+/resources/views/blog/search_result.blade.php

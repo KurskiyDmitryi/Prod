@@ -6,9 +6,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-
-            {{--            <a class="nav-link" href="{{route('calendar.index',Auth::id())}}">Calendar</a>--}}
-
             @guest()
                 <div class="col-md-9">
                     <a class="nav-link" href="{{route('login')}}"
@@ -18,15 +15,14 @@
             @endguest
             @auth()
 
-                                <form action="{{ route('logout') }}" method="POST"
-                                                          class="form-inline" style="position: absolute; bottom: 10px; right: 20px">
-                                    @csrf
-                                    <div class="col-md-9">
-                                        <input type="submit" class="btn btn-danger"
-                                               value="Log out" style="width: 80px">
-                                    </div>
-                                </form>
-
+                <form action="{{ route('logout') }}" method="POST"
+                      class="form-inline" style="position: absolute; bottom: 10px; right: 20px;">
+                    @csrf
+                    <div class="col-md-9">
+                        <input type="submit" class="btn btn-danger"
+                               value="Log out" style="width: 80px;background-color: red;margin-top: 20px">
+                    </div>
+                </form>
                 <div>
 
                     </button>

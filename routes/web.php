@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvatarController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProfileController;
@@ -36,5 +37,9 @@ Route::delete('/blog/{blog}/delete', [BlogController::class, 'delete'])->name('b
 Route::get('/blog/search', [BlogController::class, 'view_all_bloggers'])->name('blog.view_all_bloggers');
 Route::post('/blog/search', [BlogController::class, 'search'])->name('blog.search');
 
-Auth::routes(['reset' => true, 'verify' => true, 'confirm' => true]);
+
+Route::post('/profile/avatar/store', [AvatarController::class, 'store'])->name('avatar.store');
+Route::post('/profile/avatar/change',[AvatarController::class,'change'])->name('change.avatar');
+
+Auth::routes();
 
