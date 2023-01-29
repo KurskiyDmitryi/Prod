@@ -20,9 +20,9 @@
 {{--                        {{dd($user->getMedia('avatars')->first()->getUrl())}}--}}
                         <div class="panel-body">
                             <div class="text-center" id="author">
-                                <img src="@if(!empty($user->getMedia('avatars')->first())){{$user->getMedia('avatars')->first()->getUrl()}}@endif" style="width: 200px; height: 200px">
+                                <img src="@if(!empty($user->getMedia('avatars')->first())){{$user->getMedia('avatars')->first()->getUrl()}}@else http://prod.loc/avatar/empty_avatar.png @endif" style="width: 200px; height: 200px">
                                 <h3>{{$user->name}}</h3>
-                                <small class="label label-warning">{{$user->profile->city}}</small>
+                                <small class="label label-warning">@if(!empty($user->profile->city)){{$user->profile->city}}@endif</small>
                                 <p>in developing</p>
 {{--                                <form id="form" enctype="multipart/form-data" name="form" method="post">--}}
 {{--                                    <input type="file" name="file" id="file" class="btn info">--}}
@@ -67,15 +67,15 @@
                                         </tr>
                                         <tr>
                                             <td class="active">Country:</td>
-                                            <td>{{$user->profile->country}}</td>
+                                            <td>@if(!empty($user->profile->country)){{$user->profile->country}}@endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">City:</td>
-                                            <td>{{$user->profile->city}}</td>
+                                            <td>@if(!empty($user->profile->city)){{$user->profile->city}}@endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">Sex:</td>
-                                            <td>{{$user->profile->sex}}</td>
+                                            <td>@if(!empty($user->profile->sex)){{$user->profile->sex}}@endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">Age:</td>
@@ -83,7 +83,7 @@
                                         </tr>
                                         <tr>
                                             <td class="active">Family status:</td>
-                                            <td>{{$user->profile->family_status}}</td>
+                                            <td>@if(!empty($user->profile->family_status)){{$user->profile->family_status}}@endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">User rating:</td>
