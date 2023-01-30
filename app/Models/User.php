@@ -21,6 +21,11 @@ class User extends Authenticatable implements HasMedia
      *
      * @var array<int, string>
      */
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
     protected $fillable = [
         'name',
         'email',

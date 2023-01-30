@@ -40,6 +40,7 @@ Route::post('/blog/search', [BlogController::class, 'search'])->name('blog.searc
 
 Route::post('/profile/avatar/store', [AvatarController::class, 'store'])->name('avatar.store');
 Route::post('/profile/avatar/change',[AvatarController::class,'change'])->name('change.avatar');
+Route::post('/profile/avatar/delete',[AvatarController::class,'delete'])->name('delete.avatar');
 
 Auth::routes();
 

@@ -17,18 +17,17 @@
                                 </div>
                             </header>
                         </div>
-{{--                        {{dd($user->getMedia('avatars')->first()->getUrl())}}--}}
+                        {{--                        {{dd($user->getMedia('avatars')->first()->getUrl())}}--}}
                         <div class="panel-body">
                             <div class="text-center" id="author">
-                                <img src="@if(!empty($user->getMedia('avatars')->first())){{$user->getMedia('avatars')->first()->getUrl()}}@else http://prod.loc/avatar/empty_avatar.png @endif" style="width: 200px; height: 200px">
+                                <img
+                                    src="@if(!empty($user->getMedia('avatars')->first())){{$user->getMedia('avatars')->first()->getUrl()}}@else http://prod.loc/avatar/empty_avatar.png @endif"
+                                    style="width: 200px; height: 200px">
                                 <h3>{{$user->name}}</h3>
-                                <small class="label label-warning">@if(!empty($user->profile->city)){{$user->profile->city}}@endif</small>
+                                <small class="label label-warning">@if(!empty($user->profile->city))
+                                        {{$user->profile->city}}
+                                    @endif</small>
                                 <p>in developing</p>
-{{--                                <form id="form" enctype="multipart/form-data" name="form" method="post">--}}
-{{--                                    <input type="file" name="file" id="file" class="btn info">--}}
-{{--                                    <input type="submit" id="image_submit" value="Save">--}}
-{{--                                    <br>--}}
-{{--                                </form>--}}
                                 <form name="form" enctype="multipart/form-data" method="post" id="form">
                                     @csrf
                                     <input type="file" name="file" id="file" class="btn info">
@@ -38,6 +37,7 @@
                                         <button id="change_avatar" class="btn info">Change</button>
                                     @endif
                                 </form>
+                                <button class="button_delete_avatar">х</button>
                                 <p class="sosmed-author">
                                     <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
@@ -67,15 +67,21 @@
                                         </tr>
                                         <tr>
                                             <td class="active">Country:</td>
-                                            <td>@if(!empty($user->profile->country)){{$user->profile->country}}@endif</td>
+                                            <td>@if(!empty($user->profile->country))
+                                                    {{$user->profile->country}}
+                                                @endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">City:</td>
-                                            <td>@if(!empty($user->profile->city)){{$user->profile->city}}@endif</td>
+                                            <td>@if(!empty($user->profile->city))
+                                                    {{$user->profile->city}}
+                                                @endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">Sex:</td>
-                                            <td>@if(!empty($user->profile->sex)){{$user->profile->sex}}@endif</td>
+                                            <td>@if(!empty($user->profile->sex))
+                                                    {{$user->profile->sex}}
+                                                @endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">Age:</td>
@@ -83,7 +89,9 @@
                                         </tr>
                                         <tr>
                                             <td class="active">Family status:</td>
-                                            <td>@if(!empty($user->profile->family_status)){{$user->profile->family_status}}@endif</td>
+                                            <td>@if(!empty($user->profile->family_status))
+                                                    {{$user->profile->family_status}}
+                                                @endif</td>
                                         </tr>
                                         <tr>
                                             <td class="active">User rating:</td>
@@ -180,25 +188,10 @@
 @push('js')
     <script type="text/javascript">
 
-        {{--let form = document.querySelector('#form');--}}
-        {{--document.querySelector('#image_submit').addEventListener('click',async function (e){--}}
-        {{--    e.preventDefault();--}}
-        {{--    let obj = new FormData(document.querySelector('#form'));--}}
-        {{--    try {--}}
-        {{--        const {data: {route}} = await axios.post('{{route('avatar.store')}}', {obj: obj}, {--}}
-        {{--            dataType: 'html',--}}
-        {{--        })--}}
-        {{--        // location.href = route;--}}
-        {{--    } catch (e) {--}}
-
-        {{--    }--}}
-        {{--})--}}
         let form = document.querySelector('#form')
-        if(document.querySelector('#store_avatar'))
-        {
+        if (document.querySelector('#store_avatar')) {
             document.querySelector('#store_avatar').addEventListener('click', avatar);
-        }
-        else{
+        } else {
             document.querySelector('#change_avatar').addEventListener('click', avatar);
         }
 
@@ -208,7 +201,7 @@
             let obj = new FormData(form);
 
             try {
-                const {data: {route}} = await axios.post(document.querySelector('#store_avatar')?'/profile/avatar/store':'/profile/avatar/change', obj, {
+                const {data: {route}} = await axios.post(document.querySelector('#store_avatar') ? '/profile/avatar/store' : '/profile/avatar/change', obj, {
                     dataType: 'html',
                 })
                 location.href = route;
@@ -217,7 +210,15 @@
             }
         }
 
+        let del = document.querySelector('.button_delete_avatar');
+        del.addEventListener('click', async function () {
+            try {
+                const res = await axios.post('{{route('delete.avatar')}}',{id:{{Auth::id()}}})
+                location.href = res.data.route;
+            }catch (e) {
 
+            }
+        })
 
     </script>
 @endpush

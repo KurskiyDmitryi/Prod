@@ -30,4 +30,10 @@ class AvatarController extends Controller
         }
         return response()->json(['route' => url(route('profile.index', Auth::user()))]);
     }
+
+    function delete(Request $request)
+    {
+        User::find($request->id)->getMedia('avatars')->first()->delete();
+        return response()->json(['route' => url(route('profile.index', Auth::user()))]);
+    }
 }

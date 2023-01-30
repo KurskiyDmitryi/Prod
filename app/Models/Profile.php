@@ -9,6 +9,14 @@ class Profile extends Model
 {
     use HasFactory;
 
+    public function getCityAttribute($value)
+    {
+        return ucfirst($value);
+    }
+    public function getCountryAttribute($value)
+    {
+        return ucfirst($value);
+    }
     protected $fillable = [
         'age',
         'from',
