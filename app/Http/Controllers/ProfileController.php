@@ -16,12 +16,6 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function test()
-    {
-        return view('profile.test');
-    }
-
-
     public function index(User $user)
     {
         return view('profile.index',compact('user'));
@@ -86,6 +80,7 @@ class ProfileController extends Controller
                 'sex' => $request['sex'],
                 'family_status' => $request['family_status'],
                 'date_of_birth' => $request['date_of_birth'],
+                'type' => $request['type'],
                 'user_id' => Auth::id(),
             ]);
         } else {
@@ -95,6 +90,7 @@ class ProfileController extends Controller
                 'sex' => $request['sex'],
                 'family_status' => $request['family_status'],
                 'date_of_birth' => $request['date_of_birth'],
+                'type' => $request['type'],
                 'user_id' => Auth::id(),
             ]);
         }

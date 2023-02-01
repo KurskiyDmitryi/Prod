@@ -47,14 +47,19 @@ class BlogController extends Controller
 
     public function view_all_bloggers()
     {
-        $usersPaginated = DB::table('users')->paginate(6);
+
+        $usersPaginated = DB::table('users')
+            ->join('profiles', 'users.id', '=', 'profiles.user_id')
+            ->select('users.*')->where('profiles.type' ,'!=','private')
+            ->get();
+//        $usersPaginated = DB::table('profiles')->where('type','public')->paginate(6);
         return view('blog.search_bloggers', ['usersPaginated' => $usersPaginated]);
     }
 
     public function search(Request $request)
     {
 
-        $usersFromSearch = DB::table('users')->where('name', 'LIKE', "%{$request->keyWord}%")->paginate();
+        $usersFromSearch = DB::table('users')->where('name', 'LIKE', "%{$request->keyWord}%")->paginate(6);
         return view('blog.search_result', compact('usersFromSearch'));
     }
 }

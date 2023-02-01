@@ -3,6 +3,7 @@
     Profile :: {{$user->name}}
 @endsection
 @section('content')
+
     <div class="container-fluid">
         <div id="main">
 
@@ -28,16 +29,19 @@
                                         {{$user->profile->city}}
                                     @endif</small>
                                 <p>in developing</p>
-                                <form name="form" enctype="multipart/form-data" method="post" id="form">
-                                    @csrf
-                                    <input type="file" name="file" id="file" class="btn info">
-                                    @if(empty($user->getMedia('avatars')->first()))
-                                        <button id="store_avatar" class="btn info">Add</button>
-                                    @else
-                                        <button id="change_avatar" class="btn info">Change</button>
-                                    @endif
-                                </form>
-                                <button class="button_delete_avatar">х</button>
+                                @if(Auth::id() == $user->id)
+                                    <form name="form" enctype="multipart/form-data" method="post" id="form">
+                                        @csrf
+                                        <input type="file" name="file" id="file" class="btn info">
+                                        @if(empty($user->getMedia('avatars')->first()))
+                                            <button id="store_avatar" class="btn info">Add</button>
+                                        @else
+                                            <button id="change_avatar" class="btn info">Change</button>
+                                        @endif
+                                    </form>
+
+                                    <button class="button_delete_avatar">х</button>
+                                @endif
                                 <p class="sosmed-author">
                                     <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
@@ -102,7 +106,7 @@
                                 </div>
                                 <div class="???????" id="contact">
                                     <p></p>
-                                    @if(Auth::id() != $user->profile->user_id)
+                                    @if(Auth::id() != $user->id)
                                         <form role="form">
                                             <div class="form-group">
                                                 <label>Text of message</label>
@@ -213,9 +217,9 @@
         let del = document.querySelector('.button_delete_avatar');
         del.addEventListener('click', async function () {
             try {
-                const res = await axios.post('{{route('delete.avatar')}}',{id:{{Auth::id()}}})
+                const res = await axios.post('{{route('delete.avatar')}}', {id: {{Auth::id()}}})
                 location.href = res.data.route;
-            }catch (e) {
+            } catch (e) {
 
             }
         })

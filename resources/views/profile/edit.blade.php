@@ -71,22 +71,34 @@
                     <label for="family_status">Family Status:</label>
                     <select id="family_status" name="family_status" class="form-control">
                         <option value="single"
-                                @if(!empty($user->profile->sex) && $user->profile->family_status == 'single') selected @endif>
+                                @if(!empty($user->profile->family_status) && $user->profile->family_status == 'single') selected @endif>
                             Single
                         </option>
                         <option value="married"
-                                @if(!empty($user->profile->sex) && $user->profile->family_status == 'married') selected @endif>
+                                @if(!empty($user->profile->family_status) && $user->profile->family_status == 'married') selected @endif>
                             Married
                         </option>
                         <option value="divorced"
-                                @if(!empty($user->profile->sex) && $user->profile->family_status == 'divorced') selected @endif>
+                                @if(!empty($user->profile->family_status) && $user->profile->family_status == 'divorced') selected @endif>
                             Divorced
                         </option>
                         <option value="widowed"
-                                @if(!empty($user->profile->sex) && $user->profile->family_status == 'widowed') selected @endif>
+                                @if(!empty($user->profile->family_status) && $user->profile->family_status == 'widowed') selected @endif>
                             Widowed
                         </option>
                     </select>
+                    <div class="form-group">
+                        <label for="type">Account type:</label>
+                        <select id="type" name="type" class="form-control">
+                            <option value="public"
+                                    @if(!empty($user->profile->type) && $user->profile->type == 'public') selected @endif>
+                                Public
+                            </option>
+                            <option value="private"
+                                    @if(!empty($user->profile->type) && $user->profile->family_status == 'private') selected @endif>
+                                Private
+                            </option>
+                        </select>
                 </div>
                 <div class="form-group">
                     <button type="submit" value="Submit" id="submit" class="btn btn-primary">Submit</button>
@@ -129,6 +141,7 @@
                             var sex = document.querySelector('#sex').value;
                             var date_of_birth = $('input#date_of_birth').val();
                             var family_status = $('#family_status').val();
+                            var type = $('#type').val();
 
                             try {
                                 const {data: {route}} = await axios.post('{{route('profile.update',$user->slug)}}', {
@@ -137,6 +150,7 @@
                                     sex,
                                     date_of_birth,
                                     family_status,
+                                    type,
                                 })
 
                                 location.href = route;

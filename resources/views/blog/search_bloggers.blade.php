@@ -3,6 +3,7 @@
     Search :: Bloggers
 @endsection
 @section('content')
+{{--    {{dd($usersPaginated)}}--}}
     <div style="position: relative; margin-left: 800px; margin-top: 15px">
         <form id="search-field">
             <input type="checkbox" id="show-search-field"/>
@@ -15,7 +16,6 @@
     </div>
     <div id="search_result">
         <div class="row">
-
             @foreach($usersPaginated as $user)
                 <div class="col-sm-4">
                     <div class="card" style="margin-top: 100px;margin-left: 50px; margin-bottom: 40px">
@@ -23,11 +23,12 @@
                         <div class="container">
                             <h4><b>{{$user->name}}</b></h4>
                             <p>Architect & Engineer</p>
+                            <a href="{{route('profile.index',\App\Models\User::find($user->id))}}">Details</a>
                         </div>
                     </div>
                 </div>
             @endforeach
-            {{$usersPaginated->links()}}
+{{--            {{$usersPaginated->links()}}--}}
         </div>
     </div>
     <style>
@@ -60,7 +61,7 @@
                 document.querySelector('.row').remove();
                 var htmlObject = document.createElement('div');
                 htmlObject.innerHTML = response.data;
-                document.querySelector('#search_result').append(htm)
+                document.querySelector('#search_result').append(htmlObject)
 
 
             } catch (e) {
