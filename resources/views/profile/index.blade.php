@@ -107,11 +107,14 @@
                                 <div class="???????" id="contact">
                                     <p></p>
                                     @if(Auth::id() != $user->id)
-                                        <form role="form">
+                                        <form role="form" method="post" action="{{route('message.send')}}">
+                                            @csrf
                                             <div class="form-group">
                                                 <label>Text of message</label>
                                                 <textarea class="form-control rounded"
-                                                          style="height: 100px;"></textarea>
+                                                          style="height: 100px;" name="message"></textarea>
+                                                <input type="hidden" value="{{$user->id}}" name="receiver_id">
+                                                <input type="hidden" value="{{Auth::id()}}" name="sender_id">
                                                 <p class="help-block">Текст сообщения будет отправлен пользователю</p>
                                             </div>
                                             <div class="form-group">
@@ -191,7 +194,7 @@
 @endsection
 @push('js')
     <script type="text/javascript">
-
+        @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
         let form = document.querySelector('#form')
         if (document.querySelector('#store_avatar')) {
             document.querySelector('#store_avatar').addEventListener('click', avatar);
@@ -214,6 +217,7 @@
             }
         }
 
+
         let del = document.querySelector('.button_delete_avatar');
         del.addEventListener('click', async function () {
             try {
@@ -223,6 +227,6 @@
 
             }
         })
-
+        @endif
     </script>
 @endpush

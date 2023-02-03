@@ -116,19 +116,19 @@ body #scene #left-zone .list li.item input[type=radio] ~ label.label_blog:before
     width: 50px;
     height: 50px;
     margin-left: 15px;
-    background-image: url("../../../public/main_page_icons/blog_icon.jpeg");
+    background-image: url("../../../public/main_page_icons/blog_icon.png");
     background-position: center;
     background-size: 75% 75%;
     background-repeat: no-repeat;
 }
-body #scene #left-zone .list li.item input[type=radio] ~ label.label_apple:before {
+body #scene #left-zone .list li.item input[type=radio] ~ label.label_message:before {
     content: " ";
     display: block;
     position: absolute;
     width: 50px;
     height: 50px;
     margin-left: 15px;
-    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/14333-200.png");
+    background-image: url("../../../public/main_page_icons/messages_icon.jpeg");
     background-position: center;
     background-size: 75% 75%;
     background-repeat: no-repeat;
@@ -176,7 +176,7 @@ body #scene #left-zone .list li.item input[type=radio] ~ .content.content_profil
 body #scene #left-zone .list li.item input[type=radio] ~ .content.content_blog .picto {
     height: 100px;
     width: 100px;
-    background-image: url("../../../public/main_page_icons/blog_icon.jpeg");
+    background-image: url("../../../public/main_page_icons/blog_icon.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -184,15 +184,15 @@ body #scene #left-zone .list li.item input[type=radio] ~ .content.content_blog .
 body #scene #left-zone .list li.item input[type=radio] ~ .content.content_blog h1 {
     color: #F5D76E;
 }
-body #scene #left-zone .list li.item input[type=radio] ~ .content.content_apple .picto {
+body #scene #left-zone .list li.item input[type=radio] ~ .content.content_message .picto {
     height: 100px;
     width: 100px;
-    background-image: url("https://d30y9cdsu7xlg0.cloudfront.net/png/14333-200.png");
+    background-image: url("../../../public/main_page_icons/messages_icon.jpeg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
-body #scene #left-zone .list li.item input[type=radio] ~ .content.content_apple h1 {
+body #scene #left-zone .list li.item input[type=radio] ~ .content.content_message h1 {
     color: #00B16A;
 }
 body #scene #left-zone .list li.item input[type=radio] ~ .content.content_orange .picto {
@@ -226,7 +226,7 @@ body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_blo
     color: #F5D76E;
     border-right: solid 4px #F5D76E;
 }
-body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_apple {
+body #scene #left-zone .list li.item input[type=radio]:checked ~ label.label_message {
     color: #00B16A;
     border-right: solid 4px #00B16A;
 }

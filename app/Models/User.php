@@ -72,5 +72,10 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Blog::class);
     }
+    public function messages()
+    {
+        return $this->hasMany(Message::class,'sender_id','id');
+    }
+
 
 }

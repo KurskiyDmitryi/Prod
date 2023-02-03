@@ -56,6 +56,7 @@ class BlogController extends Controller
         return view('blog.search_bloggers', ['usersPaginated' => $usersPaginated]);
     }
 
+
     public function search(Request $request)
     {
 

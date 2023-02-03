@@ -31,20 +31,19 @@
                         <a href="{{route('blog.view_all_bloggers')}}" class="btn-primary btn btn-small blog_buttons">Other bloggers</a>
                     </div>
                 </li>
-{{--                <li class="item">--}}
-{{--                    <input type="radio"--}}
-{{--                           id="radio_The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit tree, and is the most widely grown species in the genus Malus."--}}
-{{--                           name="basic_carousel"--}}
-{{--                           value="The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit tree, and is the most widely grown species in the genus Malus."/>--}}
-{{--                    <label class="label_apple"--}}
-{{--                           for="radio_The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit tree, and is the most widely grown species in the genus Malus.">apple</label>--}}
-{{--                    <div class="content content_apple"><span class="picto"></span>--}}
-{{--                        <h1>apple</h1>--}}
-{{--                        <p>The apple tree (Malus domestica) is a deciduous tree in the rose family best known for its--}}
-{{--                            sweet, pomaceous fruit, the apple. It is cultivated worldwide as a fruit tree, and is the--}}
-{{--                            most widely grown species in the genus Malus.</p>--}}
-{{--                    </div>--}}
-{{--                </li>--}}
+                <li class="item">
+                    <input type="radio"
+                           id="messages"
+                           name="basic_carousel"
+                           value="messages"/>
+                    <label class="label_message"
+                           for="messages">Messages</label>
+                    <div class="content content_message"><span class="picto"></span>
+                        <h1>messages</h1>
+                        <p>Messages</p>
+                        <a href="{{route('messages.view_all')}}" class="btn-primary btn btn-small blog_buttons">Messages</a>
+                    </div>
+                </li>
 {{--                <li class="item">--}}
 {{--                    <input type="radio"--}}
 {{--                           id="radio_The orange (specifically, the sweet orange) is the fruit of the citrus species Citrus × sinensis in the family Rutaceae."--}}
