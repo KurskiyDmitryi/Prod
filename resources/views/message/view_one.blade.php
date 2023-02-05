@@ -5,7 +5,6 @@
 @section('content')
     <h1 style="text-align: center; margin-bottom: 40px">Chat with :: {{$user->name}}</h1>
     @foreach($chat as $message)
-
         <p @if($message->receiver_id == Auth::id()) class="sender"
            @else class="receiver"@endif>{{$message->message}}</p>
         <p class="created_at @if($message->receiver_id == Auth::id()) left
@@ -13,10 +12,10 @@
     @endforeach
     <form method="post" action="{{route('message.send')}}">
         @csrf
-    <div class="chat-input" style="margin-top: 40px">
-        <input type="text" name="message" placeholder="Enter your message...">
-        <input type="hidden" name="receiver_id" value="{{$user->id}}">
-        <input type="hidden" name="sender_id" value="{{Auth::id()}}">
+        <div class="chat-input" style="margin-top: 40px">
+            <input type="text" name="message" placeholder="Enter your message...">
+            <input type="hidden" name="receiver_id" value="{{$user->id}}">
+            <input type="hidden" name="sender_id" value="{{Auth::id()}}">
         <button type="submit">Send</button>
     </div>
     </form>
@@ -53,23 +52,23 @@
     }
 
     .sender {
-        margin-left: 400px;
+        margin-left: 700px;
         border: 1px solid blue;
         background-color: #bdc3c7;
     }
 
     .left {
-        margin-right: 200px;
+        margin-right: 150px;
     }
 
     .receiver {
         border: 1px solid green;
-        margin-left: 600px;
+        margin-left: 850px;
         background-color: greenyellow;
     }
 
     .right {
-        margin-left: 200px;
+        margin-left: 150px;
     }
 
     .created_at {

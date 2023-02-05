@@ -16,8 +16,12 @@ class Message extends Model
         'status',
     ];
 
-    public function user()
+    public function user_sent()
     {
         return $this->belongsTo(User::class, 'sender_id', 'id', 'users');
+    }
+    public function user_received()
+    {
+        return $this->belongsTo(User::class, 'received_id', 'id', 'users');
     }
 }
