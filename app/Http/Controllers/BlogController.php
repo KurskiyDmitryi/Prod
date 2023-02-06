@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
+use App\Models\Profile;
 use App\Models\User;
+use http\Env\Response;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -45,22 +50,29 @@ class BlogController extends Controller
         return response()->json(['route' => url(route('blog.view_all', Auth::user()))]);
     }
 
-    public function view_all_bloggers()
+    /**
+     * @return View
+     */
+    public function view_all_bloggers():View
     {
 
-        $usersPaginated = DB::table('users')
-            ->join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->select('users.*')->where('profiles.type' ,'!=','private')
-            ->get();
-//        $usersPaginated = DB::table('profiles')->where('type','public')->paginate(6);
+        $usersPaginated = User::with(['profile' => function ($query) {
+            $query->where('type', '!=', 'private');
+        }])->where('id', '!=', Auth::id())
+            ->paginate(12);
         return view('blog.search_bloggers', ['usersPaginated' => $usersPaginated]);
     }
 
-
-    public function search(Request $request)
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function search(Request $request): View
     {
 
-        $usersFromSearch = DB::table('users')->where('name', 'LIKE', "%{$request->keyWord}%")->paginate(6);
+        $usersFromSearch = User::with(['profile' => function ($query) {
+            $query->where('type', '!=', 'private');
+        }])->where('name', 'LIKE', "%{$request->keyWord}%")->where('id', '!=', Auth::id())->paginate();
         return view('blog.search_result', compact('usersFromSearch'));
     }
 }

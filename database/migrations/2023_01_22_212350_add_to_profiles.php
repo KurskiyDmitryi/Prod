@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->string('type')->default('public')->after('sex');git
+            $table->string('type')->default('public')->after('sex');
         });
     }
 
