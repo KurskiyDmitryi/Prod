@@ -5,20 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return View
      */
 
-    public function index(User $user)
+    public function index(User $user): View
     {
-        return view('profile.index',compact('user'));
+        return view('profile.index', compact('user'));
     }
 
     /**
@@ -34,7 +38,7 @@ class ProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,7 +49,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -56,22 +60,22 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return View
      */
-    public function edit(User $user)
+    public function edit(User $user): View
     {
-        return view('profile.edit',compact('user'));
+        return view('profile.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ProfileRequest $request, User $user)
+     * @param ProfileRequest $request
+     * @param User $user
+     * @return JsonResponse
+     git */
+    public function update(ProfileRequest $request, User $user): JsonResponse
     {
         if (!empty(User::find(Auth::id())->profile->user_id) && User::find(Auth::id())->profile->user_id == Auth::id()) {
             Profile::where('user_id', Auth::id())->update([
@@ -94,19 +98,14 @@ class ProfileController extends Controller
                 'user_id' => Auth::id(),
             ]);
         }
-        return response()->json(['route'=>url(route('profile.index',Auth::user()->slug))]);
+        return response()->json(['route' => url(route('profile.index', Auth::user()->slug))]);
     }
-
-
-
-
-
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)

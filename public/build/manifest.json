@@ -1,0 +1,43 @@
+{
+  "public/main_page_icons/profile_icon.png": {
+    "file": "assets/profile_icon-01e476df.png",
+    "src": "public/main_page_icons/profile_icon.png"
+  },
+  "public/main_page_icons/blog_icon.png": {
+    "file": "assets/blog_icon-b11431a2.png",
+    "src": "public/main_page_icons/blog_icon.png"
+  },
+  "public/main_page_icons/messages_icon.jpeg": {
+    "file": "assets/messages_icon-8ae4fbff.jpeg",
+    "src": "public/main_page_icons/messages_icon.jpeg"
+  },
+  "resources/css/buttons/buttons.css": {
+    "file": "assets/buttons-425f3128.css",
+    "src": "resources/css/buttons/buttons.css",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-9661776b.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-cdcc4e69.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-a322ede8.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app-cdcc4e69.css",
+      "assets/app-9661776b.css",
+      "assets/buttons-425f3128.css"
+    ],
+    "assets": [
+      "assets/profile_icon-01e476df.png",
+      "assets/blog_icon-b11431a2.png",
+      "assets/messages_icon-8ae4fbff.jpeg"
+    ]
+  }
+}

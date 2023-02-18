@@ -1,5 +1,4 @@
 /node_modules
-/public/build
 /public/hot
 /public/storage
 /storage/*.key
@@ -18,8 +17,3 @@ yarn-error.log
 /.vscode
 /mysql
 /public/.htaccess
-/public/index.php
-/public/build
-/build
-/resources/views/blog/search_bloggers.blade.php
-/resources/views/blog/search_result.blade.php

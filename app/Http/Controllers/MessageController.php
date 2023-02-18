@@ -14,6 +14,10 @@ use Illuminate\View\View;
 
 class MessageController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function send(Request $request): RedirectResponse
     {
         $message = Message::create([
@@ -25,7 +29,7 @@ class MessageController extends Controller
     }
 
     /**
-     * @return array|false|Application|Factory|\Illuminate\Contracts\View\View|mixed
+     * @return View
      */
     public function view_all(): View
     {
@@ -38,32 +42,23 @@ class MessageController extends Controller
 
     /**
      * @param User $user
-     * @return array|false|Application|Factory|\Illuminate\Contracts\View\View|mixed
+     * @return View
      */
 
-    public function view_one(User $user)
+    public function view_one(User $user):View
     {
         $sender = $user->id;
         $curUser = Auth::id();
-//
+
         $chat = Message::where([
             ['messages.sender_id', '=', "$sender"],
             ['messages.receiver_id', '=', "$curUser"],
-//
+
         ])
             ->orWhere([['messages.sender_id', '=', "$curUser"],
                 ['messages.receiver_id', '=', "$sender"],])
             ->orderBy('created_at')
             ->get();
-//        $chat = Message::whereHas('user_sent', function($q) use ($sender) {
-//            $q->where('receiver_id',$sender)->get();
-//        });
-//        $chat = User::whereHas('messages_sent', function ($q) use ($sender, $curUser) {
-//            $q->where('sender_id', $sender)->orWhere('receiver_id', $curUser);
-//        })->get();
-//        $chat1 =Message::whereHas('user_received',function ($q){
-//            $q->where(['id','3']);
-//        })->get();
 
         return view('message.view_one', compact(['user', 'chat']));
     }

@@ -23,11 +23,6 @@
                                value="Log out" style="width: 80px;background-color: red;margin-top: 20px">
                     </div>
                 </form>
-                <div>
-
-                    </button>
-
-                </div>
             @endauth
         </div>
     </div>
